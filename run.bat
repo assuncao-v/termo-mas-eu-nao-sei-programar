@@ -1,0 +1,1 @@
+g++ -o termo main.cpp && termo.exe
