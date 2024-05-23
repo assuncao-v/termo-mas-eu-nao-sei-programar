@@ -282,6 +282,7 @@ bool checkDuasPalavras()
   char quartaLetraSegundaPalavraDiaCopy = quartaLetraSegundaPalavraDia;
   char quintaLetraSegundaPalavraDiaCopy = quintaLetraSegundaPalavraDia;
 
+  /* Verificação da primeira palavra do dia com a primeira digitada */
   if (!(primeiraLetraPalavraDigitada == primeiraLetraPalavraDiaCopy || primeiraLetraPalavraDigitada == segundaLetraPalavraDiaCopy || primeiraLetraPalavraDigitada == terceiraLetraPalavraDiaCopy || primeiraLetraPalavraDigitada == quartaLetraPalavraDiaCopy || primeiraLetraPalavraDigitada == quintaLetraPalavraDiaCopy))
     lC1 = 'N';
   else
@@ -402,8 +403,7 @@ bool checkDuasPalavras()
     }
   }
 
-
-
+  /* Verificação da segunda palavra do dia com a segunda digitada */
   if (!(primeiraLetraSegundaPalavraDigitada == primeiraLetraSegundaPalavraDiaCopy || primeiraLetraSegundaPalavraDigitada == segundaLetraSegundaPalavraDiaCopy || primeiraLetraSegundaPalavraDigitada == terceiraLetraSegundaPalavraDiaCopy || primeiraLetraSegundaPalavraDigitada == quartaLetraSegundaPalavraDiaCopy || primeiraLetraSegundaPalavraDigitada == quintaLetraSegundaPalavraDiaCopy))
     l2C1 = 'N';
   else
@@ -543,7 +543,7 @@ void getPalavra()
       std::cin >> std::setw(6) >> primeiraLetraPalavraDigitada >> segundaLetraPalavraDigitada >> terceiraLetraPalavraDigitada >> quartaLetraPalavraDigitada >> quintaLetraPalavraDigitada;
 
       if (!(palavraValida = eValidaPalavra()))
-        std::cout << "A palavra deve ter exatamente 5 caracteres alfabéticos (minúsculos).\n";
+        std::cout << "A palavra deve ter exatamente 5 caracteres alfabéticos.\n";
 
     } while (!palavraValida);
   }
@@ -556,10 +556,10 @@ void getPalavra()
       std::cin >> std::setw(6) >> primeiraLetraSegundaPalavraDigitada >> segundaLetraSegundaPalavraDigitada >> terceiraLetraSegundaPalavraDigitada >> quartaLetraSegundaPalavraDigitada >> quintaLetraSegundaPalavraDigitada;
 
       if (!(palavraValida = eValidaPalavra()))
-        std::cout << "A primeira palavra deve ter exatamente 5 caracteres alfabéticos (minúsculos).\n";
+        std::cout << "A primeira palavra deve ter exatamente 5 caracteres alfabéticos.\n";
 
       if (!(segundaPalavraValida = eValidaSegundaPalavra()))
-        std::cout << "A segunda palavra deve ter exatamente 5 caracteres alfabéticos (minúsculos).\n";
+        std::cout << "A segunda palavra deve ter exatamente 5 caracteres alfabéticos.\n";
 
     } while (!palavraValida || !segundaPalavraValida);
   }
