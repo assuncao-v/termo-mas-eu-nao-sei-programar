@@ -1,1 +1,1 @@
-g++ -o termo main.cpp && termo.exe
+g++ -o termo teste.cpp && termo.exe
