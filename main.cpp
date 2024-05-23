@@ -1,7 +1,5 @@
 #include <iostream>
 #include <iomanip>
-#include <cstdlib>
-#include <cstring>
 #include <clocale>
 #include <ctime>
 
@@ -13,29 +11,31 @@ char firstLetter, secondLetter, thirdLetter, fourthLetter, fifthLetter;
 // Letras da palavra digitada
 char c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0;
 
-void definingTheWordOfTheDay(int randomNumber);
+void definePalavraDoDia(int randomNumber);
 void getPalavra();
 bool checkPalavra();
 
 int main()
 {
-
   setlocale(LC_ALL, "");
   std::srand(time(nullptr));
+  /*
+  std::time_t time = std::time(NULL);
+  std::tm* now = std::localtime(&time);
 
+  std::srand(now->tm_yday);
+  */
+  
   int tentativas = 0;
-  bool jogoTerminou = false;
-  bool venceu = false;
+  bool jogoTerminou = false, venceu = false;
 
-  definingTheWordOfTheDay(std::rand() % TAMANHO_LISTA);
+  definePalavraDoDia(std::rand() % TAMANHO_LISTA);
 
   std::cout << firstLetter << secondLetter << thirdLetter << fourthLetter << fifthLetter << "\n";
 
   std::cout << "Digite uma palavra de 5 letras:\n";
 
-  do
-  {
-
+  do{
     getPalavra();
 
     venceu = checkPalavra();
@@ -47,7 +47,7 @@ int main()
   if (venceu)
   {
     std::cin.ignore();
-    std::cout << "Parabens!\n";
+    std::cout << "Parabéns!\n";
   }
   else
   {
@@ -63,7 +63,11 @@ int main()
 
 bool checkPalavra()
 {
-
+  /* Status de cada letra digitada pelo usuário, sendo que:
+  N = Não existe na palavra.
+  E = Existe, mas está na posição errada.
+  C = Correta a posiçao para letra.
+  */
   char lC1 = 'N';
   char lC2 = 'N';
   char lC3 = 'N';
@@ -77,158 +81,118 @@ bool checkPalavra()
   char fifthLetterCopy = fifthLetter;
 
   if (!(c1 == firstLetterCopy || c1 == secondLetterCopy || c1 == thirdLetterCopy || c1 == fourthLetterCopy || c1 == fifthLetterCopy))
-  {
     lC1 = 'N';
-  }
   else
   {
     if (c1 == firstLetterCopy)
     {
       lC1 = 'C';
+      firstLetterCopy = '.';
     }
     else
     {
       lC1 = 'E';
+    
+      if (c1 == secondLetterCopy)
+        secondLetterCopy = '.';
+      else if (c1 == thirdLetterCopy)
+            thirdLetterCopy = '.';
+          else if (c1 == fourthLetterCopy)
+                fourthLetterCopy = '.';
+              else fifthLetterCopy = '.';
     }
-
-    if (c1 == firstLetterCopy)
-      firstLetterCopy = '.';
-
-    else if (c1 == secondLetterCopy)
-      secondLetterCopy = '.';
-
-    else if (c1 == thirdLetterCopy)
-      thirdLetterCopy = '.';
-
-    else if (c1 == fourthLetterCopy)
-      fourthLetterCopy = '.';
-
-    else if (c1 == fifthLetterCopy)
-      fifthLetterCopy = '.';
   }
 
   if (!(c2 == firstLetterCopy || c2 == secondLetterCopy || c2 == thirdLetterCopy || c2 == fourthLetterCopy || c2 == fifthLetterCopy))
-  {
     lC2 = 'N';
-  }
   else
   {
     if (c2 == secondLetterCopy)
     {
       lC2 = 'C';
+      secondLetterCopy = '.';
     }
     else
     {
       lC2 = 'E';
+
+      if (c2 == firstLetterCopy)
+        firstLetterCopy = '.';      
+      else if (c2 == thirdLetterCopy)
+            thirdLetterCopy = '.';
+          else if (c2 == fourthLetterCopy)
+                fourthLetterCopy = '.';
+              else fifthLetterCopy = '.';
     }
-
-    if (c2 == firstLetterCopy)
-      firstLetterCopy = '.';
-
-    else if (c2 == secondLetterCopy)
-      secondLetterCopy = '.';
-
-    else if (c2 == thirdLetterCopy)
-      thirdLetterCopy = '.';
-
-    else if (c2 == fourthLetterCopy)
-      fourthLetterCopy = '.';
-
-    else if (c2 == fifthLetterCopy)
-      fifthLetterCopy = '.';
   }
 
   if (!(c3 == firstLetterCopy || c3 == secondLetterCopy || c3 == thirdLetterCopy || c3 == fourthLetterCopy || c3 == fifthLetterCopy))
-  {
     lC3 = 'N';
-  }
   else
   {
     if (c3 == thirdLetterCopy)
     {
       lC3 = 'C';
+      thirdLetterCopy = '.';
     }
     else
     {
       lC3 = 'E';
+
+      if (c3 == firstLetterCopy)
+        firstLetterCopy = '.';
+      else if (c3 == secondLetterCopy)
+            secondLetterCopy = '.';
+          else if (c3 == fourthLetterCopy)
+                fourthLetterCopy = '.';
+              else fifthLetterCopy = '.';
     }
-
-    if (c3 == firstLetterCopy)
-      firstLetterCopy = '.';
-
-    else if (c3 == secondLetterCopy)
-      secondLetterCopy = '.';
-
-    else if (c3 == thirdLetterCopy)
-      thirdLetterCopy = '.';
-
-    else if (c3 == fourthLetterCopy)
-      fourthLetterCopy = '.';
-
-    else if (c3 == fifthLetterCopy)
-      fifthLetterCopy = '.';
   }
 
   if (!(c4 == firstLetterCopy || c4 == secondLetterCopy || c4 == thirdLetterCopy || c4 == fourthLetterCopy || c4 == fifthLetterCopy))
-  {
     lC4 = 'N';
-  }
   else
   {
     if (c4 == fourthLetterCopy)
     {
       lC4 = 'C';
+      fourthLetterCopy = '.';
     }
     else
     {
       lC4 = 'E';
+    
+      if (c4 == firstLetterCopy)
+        firstLetterCopy = '.';
+      else if (c4 == secondLetterCopy)
+            secondLetterCopy = '.';
+          else if (c4 == thirdLetterCopy)
+                thirdLetterCopy = '.';
+              else fifthLetterCopy = '.';
     }
-
-    if (c4 == firstLetterCopy)
-      firstLetterCopy = '.';
-
-    else if (c4 == secondLetterCopy)
-      secondLetterCopy = '.';
-
-    else if (c4 == thirdLetterCopy)
-      thirdLetterCopy = '.';
-
-    else if (c4 == fourthLetterCopy)
-      fourthLetterCopy = '.';
-
-    else if (c4 == fifthLetterCopy)
-      fifthLetterCopy = '.';
   }
 
   if (!(c5 == firstLetterCopy || c5 == secondLetterCopy || c5 == thirdLetterCopy || c5 == fourthLetterCopy || c5 == fifthLetterCopy))
-  {
     lC5 = 'N';
-  }
   else
   {
     if (c5 == fifthLetterCopy)
     {
       lC5 = 'C';
+      fifthLetterCopy = '.';
     }
     else
     {
       lC5 = 'E';
+    
+      if (c5 == firstLetterCopy)
+        firstLetterCopy = '.';
+      else if (c5 == secondLetterCopy)
+            secondLetterCopy = '.';
+          else if (c5 == thirdLetterCopy)
+                thirdLetterCopy = '.';
+              else fourthLetterCopy = '.';
     }
-
-    if (c5 == firstLetterCopy)
-      firstLetterCopy = '.';
-
-    else if (c5 == secondLetterCopy)
-      secondLetterCopy = '.';
-
-    else if (c5 == thirdLetterCopy)
-      thirdLetterCopy = '.';
-
-    else if (c5 == fourthLetterCopy)
-      fourthLetterCopy = '.';
-
-    else if (c5 == fifthLetterCopy)
-      fifthLetterCopy = '.';
   }
 
   std::cout << lC1 << lC2 << lC3 << lC4 << lC5 << "\n\n";
@@ -240,19 +204,16 @@ void getPalavra()
 {
   bool palavraValida = false;
 
-  do
-  {
+  do{
     std::cin >> std::setw(6) >> c1 >> c2 >> c3 >> c4 >> c5;
 
     if (!(palavraValida = (c1 >= 'a' && c1 <= 'z') && (c2 >= 'a' && c2 <= 'z') && (c3 >= 'a' && c3 <= 'z') && (c4 >= 'a' && c4 <= 'z') && (c5 >= 'a' && c5 <= 'z' && c5)))
-    {
-      std::cout << "A palavra deve ter exatamente 5 caracteres alfabeticos (minusculos).\n";
-    }
+      std::cout << "A palavra deve ter exatamente 5 caracteres alfabéticos (minúsculos).\n";
 
   } while (!palavraValida);
 }
 
-void definingTheWordOfTheDay(int randomNumber)
+void definePalavraDoDia(int randomNumber)
 {
   switch (randomNumber)
   {
